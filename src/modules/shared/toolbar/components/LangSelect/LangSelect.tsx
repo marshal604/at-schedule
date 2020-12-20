@@ -15,7 +15,7 @@ const LangSelect: FunctionComponent<LangSelectProps & WithTranslation> = (props)
   return (
     <select onChange={(event) => onSelect(event.target.value as Lang)} value={myLang}>
       {LANGUAGE_OPTIONS.map((lang) => (
-        <option key={lang.toString()} value={lang.id}>
+        <option key={lang.id} value={lang.id}>
           {props.t('General.Field.' + lang.name)}
         </option>
       ))}
