@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "i18next": "^19.8.4",
     "moment-timezone": "^0.5.32",
     "react": "^17.0.1",
