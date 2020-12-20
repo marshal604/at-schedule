@@ -1,0 +1,21 @@
+.at-button {
+  background: var(--at-bg);
+  border-radius: 0;
+  border: 1px solid var(--at-border-color);
+  outline: none;
+  cursor: pointer;
+  color: var(--at-text);
+  padding: 8px 16px;
+  transition: 0.2s;
+
+  &:hover {
+    color: var(--at-primary-color);
+    border: 1px solid;
+  }
+
+  &:disabled {
+    color: var(--at-disabled-color);
+    border: 1px solid var(--at-disabled-border-color);
+    cursor: not-allowed;
+  }
+}

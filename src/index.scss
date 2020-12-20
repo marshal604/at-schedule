@@ -2,3 +2,12 @@
 @import 'scss/mixin';
 @import 'scss/variable';
 @import 'scss/utils';
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, PingFang HK, \.PingFang-SC-Regular, PingFang, Hiragino Sans GB, STHeiti, Microsoft JhengHei,
+    sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--at-text);
+}

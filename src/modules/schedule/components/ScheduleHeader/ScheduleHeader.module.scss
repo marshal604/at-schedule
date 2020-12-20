@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &-date {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-time-zone {
+    flex: 1;
+    text-align: right;
+    white-space: nowrap;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+}
+
+.date {
+  &-title {
+    margin-left: 16px;
+    white-space: nowrap;
+  }
+
+  &-button {
+    background: transparent;
+    border-radius: 0;
+    border: 1px solid var(--at-border-color);
+    outline: none;
+    cursor: pointer;
+    color: var(--at-text);
+    padding: 8px 16px;
+
+    &:first-of-type {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    &:hover {
+      color: var(--at-primary-color);
+      border: 1px solid;
+    }
+
+    &:disabled {
+      color: var(--at-disabled-color);
+      border: 1px solid;
+      cursor: not-allowed;
+    }
+  }
+}
