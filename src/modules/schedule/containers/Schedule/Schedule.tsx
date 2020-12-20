@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 import moment from 'moment-timezone';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import { ScheduleItem, ScheduleState } from './Schedule.model';
 import ScheduleHeader from 'src/modules/schedule/components/ScheduleHeader/ScheduleHeader';
 import ScheduleContent from 'src/modules/schedule/components/ScheduleContent/ScheduleContent';
 import style from './Schedule.module.scss';
 import { getScheduleList } from 'src/api/schedule/schedule';
-export default class Schedule extends Component<{}, ScheduleState> {
+export class Schedule extends Component<WithTranslation, ScheduleState> {
   state: ScheduleState = {
     start: this.initStartDate(),
     data: new Map<string, ScheduleItem[]>(),
@@ -21,7 +22,7 @@ export default class Schedule extends Component<{}, ScheduleState> {
   render() {
     return (
       <div className={style.box}>
-        <h3 className={style['box-title']}>授課時間</h3>
+        <h3 className={style['box-title']}>{this.props.t('Schedule.Field.AvailableTimes')}</h3>
         <ScheduleHeader
           disablePrev={this.state.disablePrev}
           next={() => this.onNext()}
@@ -133,3 +134,5 @@ export default class Schedule extends Component<{}, ScheduleState> {
     return result;
   }
 }
+
+export default withTranslation()(Schedule);

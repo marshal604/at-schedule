@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
 import moment from 'moment-timezone';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import { ScheduleHeaderProps } from './ScheduleHeader.model';
 import style from './ScheduleHeader.module.scss';
-const ScheduleHeader: FunctionComponent<ScheduleHeaderProps> = (props) => {
+const ScheduleHeader: FunctionComponent<ScheduleHeaderProps & WithTranslation> = (props) => {
   return (
     <div className={style.header}>
       <div className={style['header-date']}>
@@ -16,9 +17,11 @@ const ScheduleHeader: FunctionComponent<ScheduleHeaderProps> = (props) => {
         </button>
         <div className={style['date-title']}>{props.date}</div>
       </div>
-      <div className={style['header-time-zone']}>* 時間以 GMT{moment.tz(moment.tz.guess()).format('Z')} 顯示</div>
+      <div className={style['header-time-zone']}>
+        * {props.t('Schedule.Message.TimeZoneTip', { timezone: `GMT${moment.tz(moment.tz.guess()).format('Z')}` })}
+      </div>
     </div>
   );
 };
 
-export default ScheduleHeader;
+export default withTranslation()(ScheduleHeader);
