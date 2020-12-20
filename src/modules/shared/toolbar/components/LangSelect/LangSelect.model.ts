@@ -6,7 +6,7 @@ export interface LangSelectProps {
   default: Lang;
 }
 
-export const LANG = [
+export const LANGUAGE_OPTIONS = [
   {
     id: Lang.English,
     name: 'English'

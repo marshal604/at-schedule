@@ -5,10 +5,10 @@ import Toolbar from './modules/shared/toolbar/containers/Toolbar/Toolbar';
 
 function App() {
   return (
-    <div>
+    <>
       <Toolbar />
       <Schedule />
-    </div>
+    </>
   );
 }
 

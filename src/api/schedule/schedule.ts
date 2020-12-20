@@ -6,17 +6,10 @@ export async function getScheduleList(request: ScheduleListRequest): Promise<Sch
 }
 
 export function mockData(start: string): ScheduleList {
-  const delay = 6;
-  const days = 4;
-  const even = Array(6)
-    .fill(undefined)
-    .map((_, i) => i * 2 + delay);
-  const odd = Array(3)
-    .fill(undefined)
-    .map((_, i) => i * 2 + 1 + delay);
   const setRandomData = (list: ScheduleDateItem[], ref: number[]) => {
+    const DAY_COUNT = 4;
     const today = moment.utc(moment().format('YYYY/MM/DD'));
-    Array(days)
+    Array(DAY_COUNT)
       .fill(ref)
       .forEach((v: number[], i) => {
         const t = moment(start).clone().add(i, 'days').utc();
@@ -32,10 +25,22 @@ export function mockData(start: string): ScheduleList {
         });
       });
   };
+
+  const DELAY_HOUR = 6;
+
   const available: ScheduleDateItem[] = [];
+  const AVAILABLE_TIME_COUNT = 6;
+  const availableTimeList = Array(AVAILABLE_TIME_COUNT)
+    .fill(undefined)
+    .map((_, i) => i * 2 + DELAY_HOUR);
+  setRandomData(available, availableTimeList);
+
   const booked: ScheduleDateItem[] = [];
-  setRandomData(available, even);
-  setRandomData(booked, odd);
+  const BOOKED_TIME_COUNT = 3;
+  const bookedTimeList = Array(BOOKED_TIME_COUNT)
+    .fill(undefined)
+    .map((_, i) => i * 2 + 1 + DELAY_HOUR);
+  setRandomData(booked, bookedTimeList);
   return {
     available,
     booked

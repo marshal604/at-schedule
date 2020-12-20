@@ -8,7 +8,6 @@ import { ScheduleItem } from 'src/modules/schedule/containers/Schedule/Schedule.
 import style from './ScheduleContent.module.scss';
 
 const ScheduleContent: FunctionComponent<ScheduleContentProps & WithTranslation> = (props) => {
-  const days = DAYS;
   const hasBooked = (list: ScheduleItem[]): boolean => {
     return list.some((item) => item.booked);
   };
@@ -17,7 +16,7 @@ const ScheduleContent: FunctionComponent<ScheduleContentProps & WithTranslation>
       {Array.from(props.data.entries()).map(([key, value], index) => (
         <ul key={key} className={[style['box-col']].concat(hasBooked(value) ? style['box-col--booked'] : []).join(' ')}>
           <li className={style['col-th']}>
-            <div>{props.t('Schedule.Field.' + days[index])}</div>
+            <div>{props.t('Schedule.Field.' + DAYS[index])}</div>
             <div>{moment(key).format('DD')}</div>
           </li>
           {value.map((time) => (

@@ -6,7 +6,7 @@ import zhTw from 'src/assets/i18n/zh-TW.json';
 import en from 'src/assets/i18n/en.json';
 // the translations
 // (tip move them in a JSON file and import them)
-const resources = {
+const RESOURCES = {
   'zh-TW': {
     translation: zhTw
   },
@@ -24,7 +24,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .use(i18nextBrowserLangDetector)
   .init({
-    resources,
+    resources: RESOURCES,
     detection: DETECTION_OPTIONS,
     fallbackLng: 'zh-TW',
     interpolation: {
