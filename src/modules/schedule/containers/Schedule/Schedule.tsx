@@ -74,18 +74,18 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
     );
   }
 
+  onViewAllSchedule() {
+    this.setState({
+      viewAllSchedule: true
+    });
+  }
+
   fetchData() {
     getScheduleList({ start: moment(this.state.start).format('YYYY/MM/DD') }).then((data) => {
       let result = data.available.concat(data.booked.map((item) => ({ ...item, booked: true })));
       this.setState({
-        data: this.parseTime(result)
+        data: this.parseScheduleList(result)
       });
-    });
-  }
-
-  onViewAllSchedule() {
-    this.setState({
-      viewAllSchedule: true
     });
   }
 
@@ -106,7 +106,7 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
     return `${start.format('YYYY/MM/DD')} - ${end.format(format)}`;
   }
 
-  private parseTime(data: ScheduleItem[]): Map<string, ScheduleItem[]> {
+  private parseScheduleList(data: ScheduleItem[]): Map<string, ScheduleItem[]> {
     const start = moment(this.state.start);
     const result = new Map<string, ScheduleItem[]>(
       Array(7)
