@@ -8,7 +8,7 @@ export async function getScheduleList(request: ScheduleListRequest): Promise<Sch
 export function mockData(start: string): ScheduleList {
   const setRandomData = (list: ScheduleDateItem[], ref: number[]) => {
     const DAY_COUNT = 4;
-    const today = moment.utc(moment().format('YYYY/MM/DD'));
+    const today = moment(moment().format('YYYY-MM-DD')).utc();
     Array(DAY_COUNT)
       .fill(ref)
       .forEach((v: number[], i) => {

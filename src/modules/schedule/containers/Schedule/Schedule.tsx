@@ -81,7 +81,7 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
   }
 
   fetchData() {
-    getScheduleList({ start: moment(this.state.start).format('YYYY/MM/DD') }).then((data) => {
+    getScheduleList({ start: moment(this.state.start).format('YYYY-MM-DD') }).then((data) => {
       let result = data.available.concat(data.booked.map((item) => ({ ...item, booked: true })));
       this.setState({
         data: this.parseScheduleList(result)
@@ -90,7 +90,7 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
   }
 
   private initStartDate(): string {
-    const date = moment().startOf('weeks').format();
+    const date = moment().startOf('weeks').format('YYYY-MM-DD');
     return date;
   }
 
@@ -99,11 +99,11 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
     let end = moment(this.state.start).clone().add(6, 'days');
     let format = 'DD';
     if (start.year() !== end.year()) {
-      format = 'YYYY/MM/DD';
+      format = 'YYYY-MM-DD';
     } else if (start.month() !== end.month()) {
-      format = 'MM/DD';
+      format = 'MM-DD';
     }
-    return `${start.format('YYYY/MM/DD')} - ${end.format(format)}`;
+    return `${start.format('YYYY-MM-DD').replace(/-/g, '/')} - ${end.format(format).replace(/-/g, '/')}`;
   }
 
   private parseScheduleList(data: ScheduleItem[]): Map<string, ScheduleItem[]> {
@@ -111,14 +111,14 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
     const result = new Map<string, ScheduleItem[]>(
       Array(7)
         .fill([])
-        .map((value, index) => [start.clone().add(index, 'days').format('YYYY/MM/DD'), value])
+        .map((value, index) => [start.clone().add(index, 'days').format('YYYY-MM-DD'), value])
     );
     data
       .reduce((pre: ScheduleItem[], cur) => pre.concat(this.chunkTime(cur, { interval: 30, unit: 'minutes' })), [])
       .map((item) => this.timezone(item))
       .sort((a, b) => (moment(a.start).isAfter(moment(b.start)) ? 1 : -1))
       .forEach((item) => {
-        const [date] = item.start.replace(/-/g, '/').split('T');
+        const [date] = item.start.split('T');
         // avoid time zone cross day
         if (!result.has(date)) {
           return;

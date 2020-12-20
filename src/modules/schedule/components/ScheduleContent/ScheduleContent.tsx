@@ -17,7 +17,7 @@ const ScheduleContent: FunctionComponent<ScheduleContentProps & WithTranslation>
         <ul key={key} className={[style['box-col']].concat(hasBooked(value) ? style['box-col--booked'] : []).join(' ')}>
           <li className={style['col-th']}>
             <div>{props.t('Schedule.Field.' + DAYS[index])}</div>
-            <div>{moment(key).format('DD')}</div>
+            <div>{moment(key, 'YYYY-MM-DD').format('DD')}</div>
           </li>
           {value.map((time) => (
             <li className={[style['col-td']].concat(time.booked ? style['col-td--booked'] : []).join(' ')} key={time.start}>
