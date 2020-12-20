@@ -1,46 +1,45 @@
 .box {
-    height: 400px;
-    position: relative;
-    overflow: hidden;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
 
-    &--show {
-        min-height: 400px;
-        overflow: unset;
+  &--show {
+    min-height: 400px;
+    overflow: unset;
+  }
 
+  &-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  &-content {
+    margin: 16px 0;
+  }
+
+  &-mask {
+    position: absolute;
+    font-size: 14px;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0), var(--at-bg) 30%);
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-button {
+      font-weight: 700;
+      min-width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 45px;
+
+      i {
+        margin-left: 8px;
+      }
     }
-
-    &-title {
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 20px;
-    }
-
-    &-content {
-        margin: 16px 0;
-    }
-
-    &-mask {
-        position: absolute;
-        font-size: 14px;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(transparent, var(--at-bg) 30%);
-        padding: 16px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &-button {
-            font-weight: 700;
-            min-width: 60%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 45px;
-
-            i {
-                margin-left: 8px;
-            }
-        }
-    }
+  }
 }
