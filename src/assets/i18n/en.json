@@ -1,4 +1,10 @@
 {
+  "General": {
+    "Field": {
+      "English": "English",
+      "ZhTw": "繁中"
+    }
+  },
   "Schedule": {
     "Field": {
       "AvailableTimes": "Available times",
