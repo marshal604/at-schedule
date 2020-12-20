@@ -1,4 +1,4 @@
-import { ScheduleData } from 'src/modules/schedule/containers/Schedule/Schedule.model';
+import { ScheduleItem } from 'src/modules/schedule/containers/Schedule/Schedule.model';
 export interface ScheduleContentProps {
-  data: ScheduleData;
+  data: Map<string, ScheduleItem[]>;
 }

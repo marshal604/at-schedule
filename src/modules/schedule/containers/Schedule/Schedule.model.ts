@@ -3,12 +3,8 @@ export interface ScheduleItem {
   end: string;
   booked?: boolean;
 }
-
-export interface ScheduleData {
-  [date: string]: ScheduleItem[];
-}
-
 export interface ScheduleState {
   start: string;
-  data: ScheduleData;
+  data: Map<string, ScheduleItem[]>;
+  disablePrev: boolean;
 }

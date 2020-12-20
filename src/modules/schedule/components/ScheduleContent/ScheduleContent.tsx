@@ -5,17 +5,17 @@ import moment from 'moment-timezone';
 import { ScheduleContentProps } from './ScheduleContent.model';
 
 const ScheduleContent: FunctionComponent<ScheduleContentProps> = (props) => {
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   return (
     <div>
-      {Object.entries(props.data).map(([key, value], index) => (
-        <ul>
+      {Array.from(props.data.entries()).map(([key, value], index) => (
+        <ul key={key}>
           <li>
-            <div>{moment(key).date()}</div>
+            <div>{moment(key).format('DD')}</div>
             <div>{days[index]}</div>
           </li>
           {value.map((time) => (
-            <li>{time}</li>
+            <li key={time.start}>{moment(time.start).format('HH:mm')}</li>
           ))}
         </ul>
       ))}
