@@ -49,7 +49,7 @@
     }
 
     &:disabled {
-      color: var(--at-disabled-color);
+      color: var(--at-disabled-text);
       border: 1px solid;
       cursor: not-allowed;
     }
