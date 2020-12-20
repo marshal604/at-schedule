@@ -3,12 +3,12 @@ import React, { FunctionComponent } from 'react';
 import moment from 'moment-timezone';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
-import { ScheduleContentProps } from './ScheduleContent.model';
+import { ScheduleContentProps, DAYS } from './ScheduleContent.model';
 import { ScheduleItem } from 'src/modules/schedule/containers/Schedule/Schedule.model';
 import style from './ScheduleContent.module.scss';
 
 const ScheduleContent: FunctionComponent<ScheduleContentProps & WithTranslation> = (props) => {
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = DAYS;
   const hasBooked = (list: ScheduleItem[]): boolean => {
     return list.some((item) => item.booked);
   };
