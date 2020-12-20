@@ -1,3 +1,5 @@
+@import '~src/scss/variable';
+
 .box {
   display: flex;
 
@@ -5,8 +7,10 @@
     flex: 1;
     border-top: 4px solid var(--at-disabled-title);
     margin: 0 4px;
+
     &--booked {
       border-color: var(--at-primary-color);
+
       .col-th {
         color: var(--at-primary-color);
       }
@@ -27,8 +31,17 @@
     text-align: center;
     padding: 4px 0;
     color: var(--at-disabled-text);
+
     &--booked {
       color: var(--at-primary-color);
+    }
+  }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, md)) {
+  .col {
+    &-td {
+      font-size: 0.85rem;
     }
   }
 }
