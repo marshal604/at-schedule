@@ -3,19 +3,10 @@ import React, { FunctionComponent, useState } from 'react';
 import i18next from 'i18next';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import { Lang, LangSelectProps } from './LangSelect.model';
+import { Lang, LangSelectProps, LANG } from './LangSelect.model';
 const LangSelect: FunctionComponent<LangSelectProps & WithTranslation> = (props) => {
   const [myLang, setMyLang] = useState(props.default);
-  const langs = [
-    {
-      id: Lang.English,
-      name: 'English'
-    },
-    {
-      id: Lang.ZhTw,
-      name: 'ZhTw'
-    }
-  ];
+  const langs = LANG;
 
   const onSelect = (lang: Lang) => {
     i18next.changeLanguage(lang);
