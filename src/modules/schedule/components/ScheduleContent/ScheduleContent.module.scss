@@ -1,0 +1,34 @@
+.box {
+  display: flex;
+
+  &-col {
+    flex: 1;
+    border-top: 4px solid var(--at-disabled-title);
+    margin: 0 4px;
+    &--booked {
+      border-color: var(--at-primary-color);
+      .col-th {
+        color: var(--at-primary-color);
+      }
+    }
+  }
+}
+
+.col {
+  &-th {
+    text-align: center;
+    padding: 12px 0;
+    color: var(--at-disabled-title);
+  }
+
+  &-td {
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 4px 0;
+    color: var(--at-disabled-text);
+    &--booked {
+      color: var(--at-primary-color);
+    }
+  }
+}

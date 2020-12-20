@@ -20,14 +20,17 @@ export default class Schedule extends Component<{}, ScheduleState> {
 
   render() {
     return (
-      <div className={style.layout}>
+      <div className={style.box}>
+        <h3 className={style['box-title']}>授課時間</h3>
         <ScheduleHeader
           disablePrev={this.state.disablePrev}
           next={() => this.onNext()}
           prev={() => this.onPrev()}
           date={this.getSchedulePeriod()}
         />
-        <ScheduleContent data={this.state.data} />
+        <div className={style['box-content']}>
+          <ScheduleContent data={this.state.data} />
+        </div>
       </div>
     );
   }
