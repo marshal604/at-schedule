@@ -12,7 +12,8 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
   state: ScheduleState = {
     start: this.initStartDate(),
     data: new Map<string, ScheduleItem[]>(),
-    disablePrev: true
+    disablePrev: true,
+    viewAllSchedule: false
   };
 
   componentDidMount() {
@@ -21,7 +22,7 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
 
   render() {
     return (
-      <div className={style.box}>
+      <div className={[style.box].concat(this.state.viewAllSchedule ? style['box--show'] : []).join(' ')}>
         <h3 className={style['box-title']}>{this.props.t('Schedule.Field.AvailableTimes')}</h3>
         <ScheduleHeader
           disablePrev={this.state.disablePrev}
@@ -32,6 +33,17 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
         <div className={style['box-content']}>
           <ScheduleContent data={this.state.data} />
         </div>
+        {this.state.viewAllSchedule ? null : (
+          <div className={style['box-mask']}>
+            <button
+              className={[style['box-mask-button'], 'at-button', 'at-button--primary'].join(' ')}
+              onClick={() => this.onViewAllSchedule()}
+            >
+              <span>{this.props.t('Schedule.Button.ViewFullSchedule')}</span>
+              <i className="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -68,6 +80,12 @@ export class Schedule extends Component<WithTranslation, ScheduleState> {
       this.setState({
         data: this.parseTime(result)
       });
+    });
+  }
+
+  onViewAllSchedule() {
+    this.setState({
+      viewAllSchedule: true
     });
   }
 
